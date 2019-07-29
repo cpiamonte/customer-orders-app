@@ -1,0 +1,12 @@
+.mat-card {
+    width: 230px;
+}
+
+.mat-card-header {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+a {
+    cursor: pointer;
+}
