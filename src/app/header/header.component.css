@@ -1,7 +1,12 @@
-.mat-card-header-text {
+.mat-card-header .mat-card-header-text {
     margin: 0;
 }
 
-.mat-button-wrapper .mat-icon.material-icons {
-    font-size: 14px;
+._main-header .mat-icon {
+    height: 30px;
+    width: 30px;
+}
+
+._main-header .mat-icon.material-icons {
+    font-size: 30px;
 }
