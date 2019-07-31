@@ -1,3 +1,4 @@
+import { Customer } from './../shared/customer.model';
 import { CustomerOrderService } from '../customer-order.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,8 +13,8 @@ export class CustomerListComponent implements OnInit {
   constructor(private customerOrderService: CustomerOrderService) { }
 
   ngOnInit() {
-    this.customerOrderService.getCustomer()
-      .subscribe(data => (this.customers = data));
+    this.customerOrderService.getCustomer().subscribe(data => (this.customers = data));
+    this.customerOrderService.customersChanged.subscribe((customers: Customer[]) => {this.customers = customers});
   }
 
 }

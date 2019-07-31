@@ -2,7 +2,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .mat-card-header-text {
-    margin-left: 0 !important;
+    margin: 0 !important;
 }
 
 .mat-button-wrapper .mat-icon.material-icons {

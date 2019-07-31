@@ -1,6 +1,7 @@
+import { CustomerOrderService } from './customer-order.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { MatCardModule, MatIconModule, MatButtonModule, MatGridListModule, MatToolbarModule, MatFormFieldModule, MatDialogModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatButtonModule, MatGridListModule, MatToolbarModule, MatFormFieldModule, MatDialogModule, MatInputModule, MatSelectModule, MatDividerModule, MatPaginatorModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
-import { AddCustomerDialogComponent } from './add-customer-dialog/add-customer-dialog.component';
+import { AddCustomerDialogComponent } from './customer-list/add-customer-dialog/add-customer-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +31,11 @@ import { AddCustomerDialogComponent } from './add-customer-dialog/add-customer-d
     MatDialogModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDividerModule,
+    MatPaginatorModule
   ],
-  providers: [],
+  providers: [CustomerOrderService],
   bootstrap: [AppComponent],
   entryComponents: [AddCustomerDialogComponent]
 })
