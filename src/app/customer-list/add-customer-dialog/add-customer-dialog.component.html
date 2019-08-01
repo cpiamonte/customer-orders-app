@@ -3,10 +3,10 @@
     <mat-divider></mat-divider>
     <div mat-dialog-content>
         <mat-form-field class="d-block">
-            <input matInput #nameInput placeholder="Name">
+            <input matInput [(ngModel)]="name" placeholder="Name">
         </mat-form-field>
         <mat-form-field class="d-block">
-            <input matInput #addressInput placeholder="Address">
+            <input matInput [(ngModel)]="address" placeholder="Address">
         </mat-form-field>
         <!-- <mat-form-field class="d-block">
             <mat-label>Orders</mat-label>

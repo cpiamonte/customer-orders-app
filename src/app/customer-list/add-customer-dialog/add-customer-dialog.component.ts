@@ -1,8 +1,6 @@
-import { CustomerOrderService } from './../../customer-order.service';
-import { Customer } from './../../shared/customer.model';
-import { DialogData } from '../../header/header.component';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
+import { CustomerListComponent } from './../customer-list.component';
+import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-add-customer-dialog',
@@ -10,23 +8,19 @@ import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core'
   styleUrls: ['./add-customer-dialog.component.css']
 })
 export class AddCustomerDialogComponent implements OnInit {
-  @ViewChild('nameInput', { static: false }) nameInputRef: ElementRef;
-  @ViewChild('addressInput', { static: false }) addressInputRef: ElementRef;
+  @Output() public customers: any;
+  name: string;
+  address: string;
 
   constructor(
-    public dialogRef: MatDialogRef<AddCustomerDialogComponent>,
-    private customerOrderService: CustomerOrderService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    public dialogRef: MatDialogRef<AddCustomerDialogComponent>) { }
 
   onCancel(): void {
     this.dialogRef.close();
   }
 
   onAddCustomer() {
-    const custName = this.nameInputRef.nativeElement.value;
-    const custAddress = this.addressInputRef.nativeElement.value;
-    const newCustomer = new Customer(custName, custAddress);
-    this.customerOrderService.addCustomer(newCustomer);
+    this.customers.push({name: this.name, address: this.address});
   }
 
   ngOnInit() {

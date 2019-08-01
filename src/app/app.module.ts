@@ -8,13 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AddCustomerDialogComponent } from './customer-list/add-customer-dialog/add-customer-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     CustomerListComponent,
     AddCustomerDialogComponent,
   ],

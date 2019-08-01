@@ -1,3 +1,13 @@
+<mat-toolbar>
+    <mat-toolbar-row class="_main-header d-flex align-items-center">
+        <mat-icon>person</mat-icon>
+        <span>Customers</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <button mat-button class="pl-0"><mat-icon>dashboard</mat-icon>Card View</button>
+        <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon>New Customer</button>
+    </mat-toolbar-row>
+</mat-toolbar>
 <mat-grid-list cols="4" rowHeight="2:1">
     <mat-grid-tile *ngFor="let customer of customers;">
         <mat-card class="p-0">
