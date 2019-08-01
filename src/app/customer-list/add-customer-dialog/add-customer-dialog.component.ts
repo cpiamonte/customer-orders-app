@@ -21,6 +21,7 @@ export class AddCustomerDialogComponent implements OnInit {
 
   onAddCustomer() {
     this.customers.push({name: this.name, address: this.address});
+    this.customers.emit({name: this.name, address: this.address});
   }
 
   ngOnInit() {

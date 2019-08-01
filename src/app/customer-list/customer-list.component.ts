@@ -12,16 +12,16 @@ import { CustomerOrderService } from '../customer-order.service';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
-  customersChanged = new Subject<any>();
   customers: any;
   name: string;
   address: string;
 
   constructor(private customerOrderService: CustomerOrderService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private addCustomerDialogComponent: AddCustomerDialogComponent) { }
 
   ngOnInit() {
-    // this.customersChanged.subscribe((customers: any[]) => {this.customers = customers});
+    this.addCustomerDialogComponent.onAddCustomer().subscribe(customer => (this.customers = customer));
     this.customerOrderService.getCustomer().subscribe(data => (this.customers = data));
   }
 
@@ -29,13 +29,6 @@ export class CustomerListComponent implements OnInit {
     const dialogRef = this.dialog.open(AddCustomerDialogComponent, {
       width:'500px'
     });
-
-    
-  }
-
-  addCustomer() {
-    this.customers.push(this.customers);
-    this.customersChanged.next(this.customers);
   }
 
 }
