@@ -5,7 +5,7 @@
     </mat-toolbar-row>
     <mat-toolbar-row>
         <button mat-button class="pl-0"><mat-icon>dashboard</mat-icon>Card View</button>
-        <button mat-button (click)="openDialog()"><mat-icon>add</mat-icon>New Customer</button>
+        <button mat-button (click)="openAddCustomerDialog()"><mat-icon>add</mat-icon>New Customer</button>
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-grid-list cols="4" rowHeight="2:1">
@@ -13,7 +13,7 @@
         <mat-card class="p-0">
             <mat-card-header color="primary" class="d-flex justify-content-between rounded-top p-1">
                 <mat-card-title class="mb-0">{{ customer.name }}</mat-card-title>
-                <mat-icon class="justify-content-end">edit</mat-icon>
+                <mat-icon class="justify-content-end" (click)="onUpdateDialog">edit</mat-icon>
             </mat-card-header>
             <mat-card-content class="p-2">
                 <div class="d-flex flex-start align-items-center">
@@ -29,4 +29,4 @@
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>
-<mat-paginator [length]="100" [pageSize]="10"></mat-paginator>
+<mat-paginator [length]="5" [pageSize]="12"></mat-paginator>

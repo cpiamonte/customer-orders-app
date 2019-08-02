@@ -1,6 +1,5 @@
-import { CustomerListComponent } from './../customer-list.component';
 import { MatDialogRef } from '@angular/material';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-customer-dialog',
@@ -8,23 +7,27 @@ import { Component, OnInit, Output } from '@angular/core';
   styleUrls: ['./add-customer-dialog.component.css']
 })
 export class AddCustomerDialogComponent implements OnInit {
-  @Output() public customers: any;
   name: string;
   address: string;
 
-  constructor(
-    public dialogRef: MatDialogRef<AddCustomerDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<AddCustomerDialogComponent>) { }
+ 
+  ngOnInit() {
 
-  onCancel(): void {
-    this.dialogRef.close();
   }
 
   onAddCustomer() {
-    this.customers.push({name: this.name, address: this.address});
-    this.customers.emit({name: this.name, address: this.address});
+    if (this.name && this.address) {
+      this.dialogRef.close({
+        name: this.name,
+        address: this.address
+      });
+    }
   }
 
-  ngOnInit() {
+  
+  onCancel(): void {
+    this.dialogRef.close();
   }
 
 }

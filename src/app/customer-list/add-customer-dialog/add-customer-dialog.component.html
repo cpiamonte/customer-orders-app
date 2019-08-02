@@ -2,10 +2,10 @@
     <h3>Add Customer</h3>
     <mat-divider></mat-divider>
     <div mat-dialog-content>
-        <mat-form-field class="d-block">
+        <mat-form-field class="d-block p-2">
             <input matInput [(ngModel)]="name" placeholder="Name">
         </mat-form-field>
-        <mat-form-field class="d-block">
+        <mat-form-field class="d-block p-2">
             <input matInput [(ngModel)]="address" placeholder="Address">
         </mat-form-field>
         <!-- <mat-form-field class="d-block">
@@ -15,7 +15,7 @@
             </mat-select>
         </mat-form-field> -->
     </div>
-    <div mat-dialog-actions class="justify-content-end">
+    <div mat-dialog-actions class="justify-content-end p-2">
       <button mat-button (click)="onCancel()">Cancel</button>
       <button mat-button (click)="onAddCustomer()" cdkFocusInitial type="submit">Add</button>
     </div>
