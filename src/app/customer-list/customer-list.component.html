@@ -3,17 +3,20 @@
         <mat-icon>person</mat-icon>
         <span>Customers</span>
     </mat-toolbar-row>
-    <mat-toolbar-row>
-        <button mat-button class="pl-0"><mat-icon>dashboard</mat-icon>Card View</button>
-        <button mat-button (click)="openAddCustomerDialog()"><mat-icon>add</mat-icon>New Customer</button>
+    <mat-toolbar-row class="d-flex">
+        <button mat-button routerLink="/customer-list" routerLinkActive="active" class="pl-0"><mat-icon>dashboard</mat-icon>Card View</button>
+        <button mat-button routerLink="/add-customer" (click)="openAddCustomerDialog()"><mat-icon>add</mat-icon>New Customer</button>
+        <mat-form-field class="ml-auto">
+            <input matInput [(ngModel)]="filter" placeholder="Filter" style="font-size: 14px;">
+        </mat-form-field>
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-grid-list cols="4" rowHeight="2:1">
-    <mat-grid-tile *ngFor="let customer of customers;">
+    <mat-grid-tile *ngFor="let customer of customers | customerFilter: filter | paginate: { itemsPerPage: 8, currentPage: p }">
         <mat-card class="p-0">
             <mat-card-header color="primary" class="d-flex justify-content-between rounded-top p-1">
                 <mat-card-title class="mb-0">{{ customer.name }}</mat-card-title>
-                <mat-icon class="justify-content-end" (click)="onUpdateDialog">edit</mat-icon>
+                <mat-icon class="justify-content-end" routerLink="/edit-customer/{{ customer.id }}" (click)="openEditCustomerDialog(customer)" style="cursor: pointer;">edit</mat-icon>
             </mat-card-header>
             <mat-card-content class="p-2">
                 <div class="d-flex flex-start align-items-center">
@@ -22,11 +25,11 @@
                     </div>
                     <div>
                         <p class="mb-0">{{ customer.address }}</p>
-                        <a>View Orders</a>
+                        <a (click)="openEditCustomerDialog()" style="color:dodgerblue">View Orders</a>
                     </div>
                 </div>
             </mat-card-content>
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>
-<mat-paginator [length]="5" [pageSize]="12"></mat-paginator>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

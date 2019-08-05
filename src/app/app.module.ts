@@ -1,3 +1,4 @@
+import { Routes, RouterModule } from '@angular/router';
 import { CustomerOrderService } from './customer-order.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -5,18 +6,28 @@ import { MatCardModule, MatIconModule, MatButtonModule, MatGridListModule, MatTo
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 import { AppComponent } from './app.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AddCustomerDialogComponent } from './customer-list/add-customer-dialog/add-customer-dialog.component';
 import { EditCustomerDialogComponent } from './customer-list/edit-customer-dialog/edit-customer-dialog.component';
+import { CustomerFilterPipe } from './customer-list/customer-filter.pipe';
+
+const appRoutes: Routes = [
+  {path: 'customer-list', component: CustomerListComponent},
+  {path: 'add-customer', component: AddCustomerDialogComponent},
+  {path: 'edit-customer/:id', component: EditCustomerDialogComponent}
+]
+
 @NgModule({
   declarations: [
     AppComponent,
     CustomerListComponent,
     AddCustomerDialogComponent,
     EditCustomerDialogComponent,
+    CustomerFilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -34,10 +45,12 @@ import { EditCustomerDialogComponent } from './customer-list/edit-customer-dialo
     MatSelectModule,
     MatDividerModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes),
+    NgxPaginationModule
   ],
   providers: [CustomerOrderService],
   bootstrap: [AppComponent],
-  entryComponents: [AddCustomerDialogComponent]
+  entryComponents: [AddCustomerDialogComponent, EditCustomerDialogComponent]
 })
 export class AppModule { }

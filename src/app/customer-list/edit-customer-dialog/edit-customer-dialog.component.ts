@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-edit-customer-dialog',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-customer-dialog.component.css']
 })
 export class EditCustomerDialogComponent implements OnInit {
+  customers: any;
+  id: number;
+  name: string;
+  address: string;
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<EditCustomerDialogComponent>) { }
 
   ngOnInit() {
   }
+
+  onCancel(): void {
+    this.dialogRef.close();
+  }
+
+  onSave() {
+
+  }
+
 
 }

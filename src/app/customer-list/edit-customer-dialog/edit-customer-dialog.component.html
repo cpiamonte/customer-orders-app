@@ -1,1 +1,22 @@
-<p>edit-customer-dialog works!</p>
+<div>
+    <h3>Customer Orders</h3>
+    <mat-divider></mat-divider>
+    <div mat-dialog-content>
+        <mat-form-field class="d-block p-2">
+            <input matInput [(ngModel)]="name" placeholder="Name">
+        </mat-form-field>
+        <mat-form-field class="d-block p-2">
+            <input matInput [(ngModel)]="address" placeholder="Address">
+        </mat-form-field>
+        <!-- <mat-form-field class="d-block">
+            <mat-label>Orders</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">{{ food.viewValue }}</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+    </div>
+    <div mat-dialog-actions class="justify-content-end p-2">
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button (click)="onSave()" cdkFocusInitial type="submit">Save</button>
+    </div>
+</div>

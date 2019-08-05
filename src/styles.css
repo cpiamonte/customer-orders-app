@@ -10,3 +10,8 @@
     height: 15px;
     width: 15px;
 }
+
+pagination-controls .ngx-pagination {
+    padding-left: 20px;
+    margin-top: 15px;
+}
