@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-edit-customer-dialog',
@@ -12,7 +12,8 @@ export class EditCustomerDialogComponent implements OnInit {
   name: string;
   address: string;
 
-  constructor(public dialogRef: MatDialogRef<EditCustomerDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<EditCustomerDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: {name: string, address: string }){ }
 
   ngOnInit() {
   }
@@ -22,8 +23,11 @@ export class EditCustomerDialogComponent implements OnInit {
   }
 
   onSave() {
-
+    if (this.data.name && this.data.address) {
+      this.dialogRef.close({
+        name: this.data.name,
+        address: this.data.address
+      });
+    }
   }
-
-
 }

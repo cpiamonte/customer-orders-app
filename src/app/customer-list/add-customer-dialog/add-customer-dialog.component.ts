@@ -13,7 +13,6 @@ export class AddCustomerDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<AddCustomerDialogComponent>) { }
  
   ngOnInit() {
-
   }
 
   onAddCustomer() {
@@ -24,7 +23,6 @@ export class AddCustomerDialogComponent implements OnInit {
       });
     }
   }
-
   
   onCancel(): void {
     this.dialogRef.close();
