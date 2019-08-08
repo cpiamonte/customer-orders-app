@@ -1,4 +1,3 @@
-import { Routes, RouterModule } from '@angular/router';
 import { CustomerOrderService } from './customer-order.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -15,12 +14,6 @@ import { AddCustomerDialogComponent } from './customer-list/add-customer-dialog/
 import { EditCustomerDialogComponent } from './customer-list/edit-customer-dialog/edit-customer-dialog.component';
 import { CustomerFilterPipe } from './customer-list/customer-filter.pipe';
 import { ViewOrdersDialogComponent } from './customer-list/view-orders-dialog/view-orders-dialog.component';
-
-const appRoutes: Routes = [
-  {path: 'customer-list', component: CustomerListComponent},
-  {path: 'add-customer', component: AddCustomerDialogComponent},
-  {path: 'edit-customer/:id', component: EditCustomerDialogComponent}
-]
 
 @NgModule({
   declarations: [
@@ -48,7 +41,6 @@ const appRoutes: Routes = [
     MatDividerModule,
     MatPaginatorModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
     NgxPaginationModule,
     ReactiveFormsModule
   ],

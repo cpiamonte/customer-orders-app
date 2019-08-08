@@ -31,18 +31,32 @@ export class CustomerListComponent implements OnInit {
       width:'500px',
     });
 
-    dialogRef.afterClosed().subscribe((data => {
+    dialogRef.afterClosed().subscribe(data => {
       if (data) {
         this.customers.push(data);
       } 
-    }));
+    });
   }
 
   openEditCustomerDialog(customer: any): void {
     const dialogRef = this.dialog.open(EditCustomerDialogComponent, {
       width:'500px',
-      data: {name: customer.name, address: customer.address}
+      data: {name: customer.name, address: customer.address, id: customer.id}
     });
+
+    dialogRef.afterClosed().subscribe(data => {
+        
+        for (let i = 0; i < this.customers.length; i++) {
+
+          if (this.customers[i]['id'] === data.id) {
+            this.customers[i]['name'] = data.name;
+            this.customers[i]['address'] = data.address;
+          }
+        }
+
+      }
+
+    );
   }
 
   openViewOrdersDialog(customer: any): void {

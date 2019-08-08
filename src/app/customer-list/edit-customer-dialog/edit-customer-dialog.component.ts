@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-customer-dialog',
@@ -8,12 +9,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class EditCustomerDialogComponent implements OnInit {
   customers: any;
-  id: number;
-  name: string;
-  address: string;
+  form = new FormGroup({
+    name: new FormControl(this.data.name),
+    address: new FormControl(this.data.address),
+    id: new FormControl(this.data.id)
+  });
 
   constructor(public dialogRef: MatDialogRef<EditCustomerDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {name: string, address: string }){ }
+    @Inject(MAT_DIALOG_DATA) public data: {name: string, address: string, id: number }){ }
 
   ngOnInit() {
   }
@@ -23,11 +26,6 @@ export class EditCustomerDialogComponent implements OnInit {
   }
 
   onSave() {
-    if (this.data.name && this.data.address) {
-      this.dialogRef.close({
-        name: this.data.name,
-        address: this.data.address
-      });
-    }
-  }
+    this.dialogRef.close(this.form.value);
+  };
 }

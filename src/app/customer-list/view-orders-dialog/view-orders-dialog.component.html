@@ -1,12 +1,12 @@
 <div>
-    <h3>Customer Orders</h3>
+    <h3>Customer Details</h3>
     <mat-divider></mat-divider>
     <div mat-dialog-content>
         <mat-form-field class="d-block p-2">
-            <input matInput [value]="data.name" placeholder="Name">
+            <input matInput [value]="data.name" placeholder="Name" readonly>
         </mat-form-field>
         <mat-form-field class="d-block p-2">
-            <input matInput [value]="data.address" placeholder="Address">
+            <input matInput [value]="data.address" placeholder="Address" readonly>
         </mat-form-field>
         <!-- <mat-form-field class="d-block">
             <mat-label>Orders</mat-label>

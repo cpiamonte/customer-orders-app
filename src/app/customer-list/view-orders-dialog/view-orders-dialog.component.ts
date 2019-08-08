@@ -8,9 +8,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 })
 export class ViewOrdersDialogComponent implements OnInit {
   customers: any;
-  id: number;
-  name: string;
-  address: string;
 
   constructor(public dialogRef: MatDialogRef<ViewOrdersDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {name: string, address: string }){ }
