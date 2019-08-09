@@ -11,10 +11,11 @@
         </mat-form-field>
     </mat-toolbar-row>
 </mat-toolbar>
+<mat-divider></mat-divider>
 <mat-grid-list cols="4" rowHeight="2:1">
     <mat-grid-tile *ngFor="let customer of customers | customerFilter: filter | paginate: { itemsPerPage: 8, currentPage: p }">
         <mat-card class="p-0">
-            <mat-card-header color="primary" class="d-flex justify-content-between rounded-top p-1">
+            <mat-card-header color="primary" class="d-flex justify-content-between align-items-center rounded-top p-1">
                 <mat-card-title class="mb-0">{{ customer.name }}</mat-card-title>
                 <mat-icon class="justify-content-end" (click)="openEditCustomerDialog(customer)" style="cursor: pointer;">edit</mat-icon>
             </mat-card-header>
